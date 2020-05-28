@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -32,10 +33,14 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	document.Find(".dribbble-link").Each(processElement)
 
-	for _, val := range dribbblePosts {
-		fmt.Fprintf(w, val.Url)
-		fmt.Fprintf(w, val.Image)
+	js, err := json.Marshal(dribbblePosts)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(js)
 }
 
 func processElement(index int, element *goquery.Selection) {
