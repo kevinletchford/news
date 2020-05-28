@@ -1,4 +1,3 @@
-package main
 package handler
 
 import (
@@ -9,7 +8,15 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
+type DribbbleImage struct {
+	Url   string
+	Image string
+}
+
+var dribbblePosts = []DribbbleImage{}
+
 func Handler(w http.ResponseWriter, r *http.Request) {
+
 	fmt.Fprintf(w, "<h1>Hello from Go!</h1>")
 
 	response, err := http.Get("https://www.dribbble.com")
@@ -25,20 +32,25 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	document.Find(".dribbble-link").Each(processElement)
 
-
+	for _, val := range dribbblePosts {
+		fmt.Fprintf(w, val.Url)
+		fmt.Fprintf(w, val.Image)
+	}
 }
 
 func processElement(index int, element *goquery.Selection) {
 	href, hrefExists := element.Attr("href")
 	image, imageExists := element.Find("img").Attr("src")
 
+	dribbbleImage := DribbbleImage{"", ""}
+
 	if hrefExists {
-		fmt.Fprintf(w,href)
+		dribbbleImage.Url = href
 	}
 	if imageExists {
-		fmt.Fprintf(w,image)
+		dribbbleImage.Image = image
 	}
 
+	dribbblePosts = append(dribbblePosts, dribbbleImage)
+
 }
-
-
