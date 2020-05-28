@@ -17,7 +17,7 @@ type DribbbleImage struct {
 var dribbblePosts = []DribbbleImage{}
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-
+	dribbblePosts = []DribbbleImage{}
 	fmt.Fprintf(w, "<h1>Hello from Go!</h1>")
 
 	response, err := http.Get("https://www.dribbble.com")
