@@ -8,19 +8,24 @@ import (
 )
 
 type Link struct {
-	Title   string
-	Link string
+	Title string
+	Link  string
 }
 
 var links []Link
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	
+	links = []Link{}
+	rssFeed := r.URL.Query().Get("rssfeed")
+	if rssFeed == "" {
+		return
+	}
+
 	fp := gofeed.NewParser()
-	feed, _ := fp.ParseURL("https://tympanus.net/codrops/collective/feed/")
-	
+	feed, _ := fp.ParseURL(rssFeed)
+
 	for _, item := range feed.Items {
-		links = append(links, Link{item.Title,item.Link})
+		links = append(links, Link{item.Title, item.Link})
 	}
 
 	js, err := json.Marshal(links)
@@ -32,4 +37,3 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(js)
 }
-
