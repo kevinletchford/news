@@ -120,8 +120,9 @@ button{
   border-radius:6px;
   background:var(--menu-background);
   width:calc(100vw - 2rem);
-  height: calc(100vh - 6rem);
-  margin-top:1rem;
+  height: calc(100vh - 2rem);
+  top:-2rem;
+  margin-top:0;
   font-size:2rem;
   text-align:center;
   display:flex;
@@ -135,4 +136,5 @@ button{
   display:block;
   font-weight:bold;
   font-size:3rem;
+  padding:0.5rem;
 }

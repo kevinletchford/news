@@ -14,12 +14,9 @@ export function Dribbble({dribbbleImages}: Props): ReactElement {
         <div className="dribbble">
           {items.map((item,i) =>{
             return(
-
-                <a key={i} href={item.Url} >
-                <img src={item.Image + "?compress=1&resize=400x300"} />
-                </a>
-           
-            )
+                <a key={i} href={`https://dribbble.com${item.Url}`} >
+                    <img src={item.Image + "?compress=1&resize=400x300"} />
+                </a>)
           })}
         <style jsx>{`
         .dribbble{
