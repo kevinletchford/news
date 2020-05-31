@@ -1,1 +1,1 @@
-export const server = process.env.VERCEL_URL;
+export const server = "https://news.ultr.dev";
