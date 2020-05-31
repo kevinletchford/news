@@ -36,7 +36,7 @@ export function HackerNews({ hackerLinks }: Props): ReactElement {
         }
         .score {
           font-size: 1.5rem;
-          min-width: 70px;
+          min-width: 82px;
           font-weight: 900;
           padding: 0.5rem;
           background: var(--highlight);
