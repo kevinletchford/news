@@ -1,6 +1,6 @@
 import { parseCookies, setCookie, destroyCookie } from 'nookies'
 
-enum ThemeName {
+export enum ThemeName {
     blue = "blue",
     light = "light"
 }
@@ -13,9 +13,10 @@ interface Theme {
     highlight: string;
     highlightText: string;
     link: string;
+    menuBackground:string;
   }
 
-export const setColorCookie = (color: string) => {
+export const setThemeCookie = (color: ThemeName) => {
   document.cookie = `color=${color}`;
 };
 
@@ -28,7 +29,7 @@ const getCookieValue = (a: string):ThemeName =>{
   else return ThemeName.blue
 };
 
-const setTheme = (theme: Theme) => {
+const StyleTheme = (theme: Theme) => {
   document.documentElement.style.setProperty("--background", theme.background);
   document.documentElement.style.setProperty("--header", theme.header);
   document.documentElement.style.setProperty(
@@ -41,7 +42,25 @@ const setTheme = (theme: Theme) => {
     theme.highlightText
   );
   document.documentElement.style.setProperty("--link", theme.link);
+  document.documentElement.style.setProperty("--menu-background", theme.menuBackground);
 };
+
+function findTheme(themeName: ThemeName): Theme {return themes.filter((theme) => theme.name == themeName)[0]}
+
+
+export const GetThemeFromCookie = () =>{
+  StyleTheme(findTheme(getCookieValue("color")));
+}
+
+export const setThemeStyles = (themeName:ThemeName) =>{
+  StyleTheme(findTheme(themeName));
+}
+
+export const SetTheme = (themeName:ThemeName) =>{
+  setThemeStyles(themeName);
+  setThemeCookie(themeName);
+}
+
 
 const blue: Theme = {
   name: "blue",
@@ -51,6 +70,7 @@ const blue: Theme = {
   highlight: "#3958b8",
   highlightText: "#fff",
   link: "#fff",
+  menuBackground:"#161a3a"
 };
 
 const light: Theme = {
@@ -61,14 +81,7 @@ const light: Theme = {
   highlight: "#367cfa",
   highlightText: "white",
   link: "#001f69",
+  menuBackground:"#8fb5f5"
 };
 
 const themes: Theme[] = [blue, light];
-
-function findTheme(themeName: ThemeName): Theme {return themes.filter((theme) => theme.name == themeName)[0]}
-
-
-export const SetThemeFromCookie = () =>{
-    setTheme(findTheme(getCookieValue("color")));
-}
-

@@ -4,7 +4,7 @@ import { NextPage } from 'next'
 import {Dribbble, DribbbleImage} from './../components/dribbble';
 import {HackerNews, HackerLink} from './../components/hackernews';
 import {Rss, RssLink}  from './../components/rss';
-import {SetThemeFromCookie} from './../common/theme'
+import {GetThemeFromCookie} from './../common/theme'
 import Menu from './../components/menu'
 
 interface Props {
@@ -18,7 +18,7 @@ interface Props {
 const Home: NextPage<Props> = ({ dribbbleImages, hackerLinks, coDrops, cssTricks }) => {
 
   useEffect(() => {
-      SetThemeFromCookie()
+      GetThemeFromCookie()
   });
 
   return(

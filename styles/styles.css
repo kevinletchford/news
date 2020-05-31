@@ -21,6 +21,7 @@ html {
   --highlight:#3958b8;
   --highlight-text:#fff;
   --link:#fff;
+  --menu-background:#fff;
 }
 
 body{
@@ -117,15 +118,21 @@ button{
   display:block;
   padding:1rem;
   border-radius:6px;
-  background:var(--highlight);
-  width:50vw;
-  height:50vh;
+  background:var(--menu-background);
+  width:calc(100vw - 2rem);
+  height: calc(100vh - 6rem);
   margin-top:1rem;
+  font-size:2rem;
+  text-align:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
 }
 
 .dropdown button{
   color:var(--highlight-text);
   display:block;
   font-weight:bold;
-  font-size:1.25rem;
+  font-size:3rem;
 }
