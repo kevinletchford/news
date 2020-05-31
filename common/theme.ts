@@ -1,5 +1,3 @@
-import { parseCookies, setCookie, destroyCookie } from 'nookies'
-
 export enum ThemeName {
     blue = "blue",
     light = "light"
