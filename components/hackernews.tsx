@@ -25,11 +25,32 @@ export function HackerNews({ hackerLinks }: Props): ReactElement {
         );
       })}
       <style jsx>{`
-          a{display:flex; align-items:stretch;border-radius:6px;margin-bottom:0.75rem;background:#2d325a;overflow:hidden;padding:0; color:white;}
-          .score{font-size:1.5rem;min-width:70px;font-weight:900; padding:0.5rem;background:#3958b8;display:flex;align-items:center; justify-content:center}
-          .text{padding:1rem;display:block;}
+        a {
+          display: flex;
+          align-items: stretch;
+          border-radius: 6px;
+          margin-bottom: 0.75rem;
+          background: var(--button-background);
+          overflow: hidden;
+          padding: 0;
+        }
+        .score {
+          font-size: 1.5rem;
+          min-width: 70px;
+          font-weight: 900;
+          padding: 0.5rem;
+          background: var(--highlight);
+          color: var(--highlight-text);
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
-        `}</style>
+        }
+        .text {
+          padding: 1rem;
+          display: block;
+        }
+      `}</style>
     </div>
   );
 }

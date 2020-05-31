@@ -30,7 +30,7 @@ export function Rss({title,columns,rssLinks}: Props): ReactElement {
 
 <style jsx>{`
         
-          a{display:flex; align-items:stretch;border-radius:6px;margin-bottom:0.75rem;background:#2d325a;overflow:hidden;padding:0.5rem 1rem;  color:white;}
+          a{display:flex; align-items:stretch;border-radius:6px;margin-bottom:0.75rem;background:var(--button-background);overflow:hidden;padding:0.5rem 1rem; }
 
           .columns{
             column-count: ${columns};

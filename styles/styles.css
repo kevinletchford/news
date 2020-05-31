@@ -17,8 +17,10 @@ html {
 :root {
   --background: #25294a;
   --header:rgba(255, 255, 255, 0.65);
-  --text:black;
-  --link:#aaaab2;
+  --button-background:#2d325a;
+  --highlight:#3958b8;
+  --highlight-text:#fff;
+  --link:#fff;
 }
 
 body{
@@ -52,6 +54,13 @@ a {
   line-height:1.4;
 }
 
+button{
+  background:none;
+  border:none;
+  outline:none;
+  cursor:pointer;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr;
@@ -72,3 +81,51 @@ a {
 .rss + .rss{
     margin-top:1rem;
   }
+
+.menu{
+  position:fixed;
+  top:1rem;
+  right:1rem;
+  z-index:99;
+  text-align:right;
+}
+
+.burger,
+.cross{
+  width:20px;
+  height:26px;
+  color:var(--link);
+}
+
+.cross{
+  position:absolute;
+  background:var(--background);
+  top:-0.5rem;
+  right:-0.5rem;
+  border-radius:100px;
+  width:30px;
+  height:30px;
+  padding:5px;
+}
+
+.dropdown{
+  display:none;
+  position:relative;
+}
+
+.dropdown_open{
+  display:block;
+  padding:1rem;
+  border-radius:6px;
+  background:var(--highlight);
+  width:50vw;
+  height:50vh;
+  margin-top:1rem;
+}
+
+.dropdown button{
+  color:var(--highlight-text);
+  display:block;
+  font-weight:bold;
+  font-size:1.25rem;
+}

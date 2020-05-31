@@ -4,6 +4,8 @@ import { NextPage } from 'next'
 import {Dribbble, DribbbleImage} from './../components/dribbble';
 import {HackerNews, HackerLink} from './../components/hackernews';
 import {Rss, RssLink}  from './../components/rss';
+import {SetThemeFromCookie} from './../common/theme'
+import Menu from './../components/menu'
 
 interface Props {
   dribbbleImages: DribbbleImage[]
@@ -14,7 +16,14 @@ interface Props {
 
 
 const Home: NextPage<Props> = ({ dribbbleImages, hackerLinks, coDrops, cssTricks }) => {
+
+  useEffect(() => {
+      SetThemeFromCookie()
+  });
+
   return(
+    <div>
+      <Menu />
     <div className="grid">
       <Dribbble dribbbleImages={dribbbleImages} />
       <div>
@@ -23,14 +32,16 @@ const Home: NextPage<Props> = ({ dribbbleImages, hackerLinks, coDrops, cssTricks
       </div>
       <HackerNews hackerLinks={hackerLinks} />
     </div>
+    </div>
+
   )
 }
 
 Home.getInitialProps = async ({ }) => {
-  const dribbbleJson = await getData('/api/dribbble')
-  const hackerJson = await getData('/api/hackernews')
-  const cssTricks = await getData('/api/rss?rssfeed=https://css-tricks.com/feed/')
-  const coDrops = await getData('/api/rss?rssfeed=https://tympanus.net/codrops/collective/feed/')
+  const dribbbleJson = await getData('https://news.kevinletchford.now.sh/api/dribbble')
+  const hackerJson = await getData('https://news.kevinletchford.now.sh/api/hackernews')
+  const cssTricks = await getData('https://news.kevinletchford.now.sh/api/rss?rssfeed=https://css-tricks.com/feed/')
+  const coDrops = await getData('https://news.kevinletchford.now.sh/api/rss?rssfeed=https://tympanus.net/codrops/collective/feed/')
   return {  
     dribbbleImages: dribbbleJson, 
     hackerLinks: hackerJson, 
