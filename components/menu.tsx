@@ -17,10 +17,10 @@ export default function Menu({}: Props): ReactElement {
 
     return (
         <div className="menu">
-            <button onClick={() => {setMenuOpen(!menuOpen)}}><Burger className="burger" /></button>
+            <button onClick={() => {setMenuOpen(!menuOpen)}}><span className="burger"><Burger /></span></button>
             
             <div className={ menuOpen ? "dropdown dropdown_open": "dropdown dropdown_closed"}>
-                <button onClick={() => {setMenuOpen(!menuOpen)}}><Cross className="cross" /></button>
+                <button onClick={() => {setMenuOpen(!menuOpen)}}><span className="cross"><Cross /></span></button>
                 <button onClick={() => {SetTheme(ThemeName.blue)}}>Blue</button>
                 <button onClick={() => {SetTheme(ThemeName.light)}}>Light</button>
             </div>
