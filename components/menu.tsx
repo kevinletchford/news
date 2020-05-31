@@ -15,10 +15,16 @@ export default function Menu({}: Props): ReactElement {
             
             <div className={ menuOpen ? "dropdown dropdown_open": "dropdown dropdown_closed"}>
                 <button className="cross" onClick={() => {setMenuOpen(!menuOpen)}}><Cross /></button>
+                <h3>Themes</h3>
                 <button onClick={() => {SetTheme(ThemeName.blue)}}>Blue</button>
                 <button onClick={() => {SetTheme(ThemeName.light)}}>Light</button>
             </div>
             <style jsx>{`
+
+            h3{
+                margin-bottom:1rem;
+                font-weight:300;
+            }
             .burger,
             .cross{
             width:34px;

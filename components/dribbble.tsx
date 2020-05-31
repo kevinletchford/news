@@ -23,6 +23,14 @@ export function Dribbble({dribbbleImages}: Props): ReactElement {
             display:grid;
                 grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
                 gap:1rem;
+
+
+            }
+
+            @media(min-width:1400px){
+                .dribbble{
+                grid-template-columns: repeat( auto-fit, minmax(25%, 1fr) );
+                }
             }
 
             .dribbble a{
@@ -31,8 +39,13 @@ export function Dribbble({dribbbleImages}: Props): ReactElement {
         .dribbble img{
             width:100%:
             display:block;
+            width:100%;
             max-width:100%;
         }
+
+
+        }
+
         `}
             </style>
         </div>
