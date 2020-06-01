@@ -12,12 +12,12 @@ export function Dribbble({dribbbleImages}: Props): ReactElement {
     const [items, setItems] = useState<Array<DribbbleImage>>(dribbbleImages);
     return(
         <div className="dribbble">
-          {items.map((item,i) =>{
+         {items===null||items===undefined ? <div>Fail</div>: <>{items.map((item,i) =>{
             return(
                 <a key={i} href={`https://dribbble.com${item.Url}`} >
                     <img src={item.Image + "?compress=1&resize=400x300"} />
                 </a>)
-          })}
+          })}</>}
         <style jsx>{`
         .dribbble{
             display:grid;

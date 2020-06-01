@@ -14,6 +14,7 @@ export function HackerNews({ hackerLinks }: Props): ReactElement {
   return (
     <div className="hacker-news">
       <h2>Hacker News</h2>
+      {items===null||items===undefined ? <div>Fail</div>: <> 
       {items.map((item, i) => {
         return (
           <div key={i}>
@@ -23,7 +24,7 @@ export function HackerNews({ hackerLinks }: Props): ReactElement {
             </a>
           </div>
         );
-      })}
+      })}</>}
       <style jsx>{`
         a {
           display: flex;

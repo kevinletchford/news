@@ -15,6 +15,10 @@ type Link struct {
 var links []Link
 
 func Handler(w http.ResponseWriter, r *http.Request) {
+
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Cache-Control", "s-maxage=3600")
+
 	links = []Link{}
 	rssFeed := r.URL.Query().Get("rssfeed")
 	if rssFeed == "" {
@@ -22,19 +26,23 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fp := gofeed.NewParser()
-	feed, _ := fp.ParseURL(rssFeed)
+	feed, feedErr := fp.ParseURL(rssFeed)
+
 
 	for _, item := range feed.Items {
 		links = append(links, Link{item.Title, item.Link})
 	}
 
-	js, err := json.Marshal(links)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+	if feedErr != nil{
+		http.Error(w, feedErr.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Cache-Control", "s-maxage=3600")
+	js, err := json.Marshal(links)
+	if err != nil  {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	
 	w.Write(js)
 }

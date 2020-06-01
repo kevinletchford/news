@@ -16,15 +16,15 @@ export function Rss({title,columns,rssLinks}: Props): ReactElement {
         <div className="rss">
             <h2>{title}</h2>
             <div className="columns">
-            {items.map((item,i) =>{
+            {items===null||items===undefined ? <div>Fail</div>: <>{items.map((item,i) =>{
             return(
               <div key={i}>
                 <a href={item.Link} >
                     {item.Title}
                 </a>
               </div>
-            )
-          })}
+            )}
+          )}</>}
             </div>
 
 

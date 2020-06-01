@@ -6,7 +6,7 @@ import {HackerNews, HackerLink} from './../components/hackernews';
 import {Rss, RssLink}  from './../components/rss';
 import {GetThemeFromCookie} from './../common/theme';
 import Menu from './../components/menu'
-import { server } from './../common/server';
+import { server, getData } from './../common/server';
 
 interface Props {
   dribbbleImages: DribbbleImage[]
@@ -29,7 +29,7 @@ const Home: NextPage<Props> = ({ dribbbleImages, hackerLinks, coDrops, cssTricks
       <Dribbble dribbbleImages={dribbbleImages} />
       <div>
       <Rss title="CSS Tricks" rssLinks={cssTricks} />
-      <Rss title="CoDrops" columns={2} rssLinks={coDrops} />
+      {/* <Rss title="CoDrops" columns={2} rssLinks={coDrops} /> */}
       </div>
       <HackerNews hackerLinks={hackerLinks} />
     </div>
@@ -49,14 +49,5 @@ Home.getInitialProps = async ({ }) => {
     cssTricks: cssTricks, 
     coDrops: coDrops }
 }
-
-const getData = async ( endpoint:string) => {
-  const res = await fetch(endpoint)
-  const json = await res.json()
-  return  json
-}
-
-
-
 
 export default Home
