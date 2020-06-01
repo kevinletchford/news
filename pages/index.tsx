@@ -29,7 +29,7 @@ const Home: NextPage<Props> = ({ dribbbleImages, hackerLinks, coDrops, cssTricks
       <Dribbble dribbbleImages={dribbbleImages} />
       <div>
       <Rss title="CSS Tricks" rssLinks={cssTricks} />
-      {/* <Rss title="CoDrops" columns={2} rssLinks={coDrops} /> */}
+      <Rss title="CoDrops" columns={2} rssLinks={coDrops} />
       </div>
       <HackerNews hackerLinks={hackerLinks} />
     </div>

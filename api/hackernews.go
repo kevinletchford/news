@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 	"strings"
-
+	"strconv"
 	"github.com/PuerkitoBio/goquery"
 )
 
@@ -13,6 +13,7 @@ type Link struct {
 	Url   string
 	Text  string
 	Score string
+	Id uint64
 }
 
 var links []Link
@@ -61,7 +62,7 @@ func processElement(index int, element *goquery.Selection) {
 	href, hrefExists := storyLink.Attr("href")
 	id, idExists := element.Attr("id")
 
-	linkData := Link{"", "", ""}
+	linkData := Link{}
 
 	if hrefExists {
 		linkData.Url = href
@@ -73,6 +74,10 @@ func processElement(index int, element *goquery.Selection) {
 		scoreText := doc.Find(scoreId).Text()
 		score := strings.Replace(scoreText, " points", "", -1)
 		linkData.Score = score
+		if s, err := strconv.ParseUint(id, 10, 64); err == nil {
+			linkData.Id = s
+		}
+		
 	}
 
 	links = append(links, linkData)

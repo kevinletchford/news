@@ -18,7 +18,7 @@ export function HackerNews({ hackerLinks }: Props): ReactElement {
       {items===null||items===undefined ? <div>Fail</div>: <> 
       {items.map((item, i) => {
         return (
-          <div key={i}>
+          <div className="story" key={i}>
             <a href={item.Url}>
               <span className="score">{item.Score}</span>
               <span className="text">{item.Text}</span>
@@ -28,7 +28,7 @@ export function HackerNews({ hackerLinks }: Props): ReactElement {
         );
       })}</>}
       <style jsx>{`
-        a {
+        .story{
           display: flex;
           align-items: stretch;
           border-radius: 6px;
@@ -36,6 +36,23 @@ export function HackerNews({ hackerLinks }: Props): ReactElement {
           background: var(--button-background);
           overflow: hidden;
           padding: 0;
+        }
+        a {
+          display: flex;
+          align-items: stretch;
+          padding: 0;
+          flex:1;
+        }
+        .comments{
+          font-size: 1.5rem;
+        
+          font-weight: 900;
+          padding: 0.5rem;
+          color: var(--highlight-text);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex:unset;
         }
         .score {
           font-size: 1.5rem;
