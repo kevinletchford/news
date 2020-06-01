@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from "react";
-
+import Chat from "../svg/comment-alt-dots-solid.svg";
 interface Props {
   hackerLinks: HackerLink[];
 }
@@ -7,6 +7,7 @@ export interface HackerLink {
   Url: string;
   Text: string;
   Score: string;
+  Id: number
 }
 
 export function HackerNews({ hackerLinks }: Props): ReactElement {
@@ -22,6 +23,7 @@ export function HackerNews({ hackerLinks }: Props): ReactElement {
               <span className="score">{item.Score}</span>
               <span className="text">{item.Text}</span>
             </a>
+            <a className="comments" href={`https://news.ycombinator.com/item?id=${item.Id}`}><Chat /></a>
           </div>
         );
       })}</>}
