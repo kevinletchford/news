@@ -21,12 +21,7 @@ const Home: NextPage<Props> = ({ dribbbleImages, hackerLinks, coDrops, cssTricks
 
   useEffect(() => {
       GetThemeFromCookie()
-      //@ts-ignore
-      if (!window.GA_INITIALIZED) {
-        initGA()
-        //@ts-ignore
-        window.GA_INITIALIZED = true
-      }
+      initGA()
       logPageView()
   });
 
