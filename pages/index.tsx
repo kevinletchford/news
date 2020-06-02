@@ -7,6 +7,7 @@ import {Rss, RssLink}  from './../components/rss';
 import {GetThemeFromCookie} from './../common/theme';
 import Menu from './../components/menu'
 import { server, getData } from './../common/server';
+import { initGA, logPageView } from "../common/analytics"
 
 interface Props {
   dribbbleImages: DribbbleImage[]
@@ -20,6 +21,13 @@ const Home: NextPage<Props> = ({ dribbbleImages, hackerLinks, coDrops, cssTricks
 
   useEffect(() => {
       GetThemeFromCookie()
+      //@ts-ignore
+      if (!window.GA_INITIALIZED) {
+        initGA()
+        //@ts-ignore
+        window.GA_INITIALIZED = true
+      }
+      logPageView()
   });
 
   return(
@@ -39,6 +47,8 @@ const Home: NextPage<Props> = ({ dribbbleImages, hackerLinks, coDrops, cssTricks
 }
 
 Home.getInitialProps = async ({ }) => {
+
+
   const dribbbleJson = await getData(`${server}/api/dribbble`)
   const hackerJson = await getData(`${server}/api/hackernews`)
   const cssTricks = await getData(`${server}/api/rss?rssfeed=https://css-tricks.com/feed/`)
