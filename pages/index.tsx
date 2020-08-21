@@ -1,13 +1,9 @@
 import Head from 'next/head'
-import { useState, useEffect, useRef } from "react";
 import { NextPage } from 'next'
 import {Dribbble, DribbbleImage} from './../components/dribbble';
 import {HackerNews, HackerLink} from './../components/hackernews';
 import {Rss, RssLink}  from './../components/rss';
-import {GetThemeFromCookie} from './../common/theme';
-import Menu from './../components/menu'
 import { server, getData } from './../common/server';
-import { initGA, logPageView } from "../common/analytics"
 
 interface Props {
   dribbbleImages: DribbbleImage[]
@@ -18,24 +14,18 @@ interface Props {
 
 
 const Home: NextPage<Props> = ({ dribbbleImages, hackerLinks, coDrops, cssTricks }) => {
-
-  useEffect(() => {
-      GetThemeFromCookie()
-      initGA()
-      logPageView()
-  });
-
   return(
     <div>
-      <Menu />
-    <div className="grid">
-      <Dribbble dribbbleImages={dribbbleImages} />
-      <div>
-      <Rss title="CSS Tricks" rssLinks={cssTricks} />
-      <Rss title="CoDrops" columns={2} rssLinks={coDrops} />
+
+      <div className="grid">
+          <Dribbble dribbbleImages={dribbbleImages} />
+        <div>
+          <Rss title="CSS Tricks" rssLinks={cssTricks} />
+          <Rss title="CoDrops" columns={2} rssLinks={coDrops} />
+        </div>
+          <HackerNews hackerLinks={hackerLinks} />
       </div>
-      <HackerNews hackerLinks={hackerLinks} />
-    </div>
+
     </div>
 
   )

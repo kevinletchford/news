@@ -1,0 +1,60 @@
+{
+    "name": "Ultr News",
+    "short_name": "Ultr News",
+    "icons": [
+        {
+            "src": "img/ultr-72.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "img/ultr-96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "img/ultr-120.png",
+            "sizes": "120x120",
+            "type": "image/png"
+        },
+        {
+            "src": "img/ultr-128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "img/ultr-144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "img/ultr-152.png",
+            "sizes": "152x152",
+            "type": "image/png"
+        },
+        {
+            "src": "img/ultr-180.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
+            "src": "img/ultr-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "img/ultr-384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "img/ultr-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#25294a",
+    "background_color": "#25294a"
+  }

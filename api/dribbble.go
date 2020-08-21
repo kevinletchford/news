@@ -29,7 +29,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		log.Fatal("Error loading Http response body.", err)
 	}
 
-	document.Find(".dribbble-link").Each(processElement)
+	document.Find(".shot-thumbnail").Each(processElement)
 
 	js, err := json.Marshal(dribbblePosts)
 	if err != nil {
@@ -43,7 +43,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func processElement(index int, element *goquery.Selection) {
-	href, hrefExists := element.Attr("href")
+	href, hrefExists := element.Find("a").Attr("href")
 	image, imageExists := element.Find("img").Attr("src")
 
 	dribbbleImage := DribbbleImage{"", ""}
