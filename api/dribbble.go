@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
-
 	"github.com/PuerkitoBio/goquery"
 )
 
@@ -44,7 +43,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 func processElement(index int, element *goquery.Selection) {
 	href, hrefExists := element.Find("a").Attr("href")
-	image, imageExists := element.Find("img").Attr("src")
+	image, imageExists := element.Find("picture img").Attr("src")
 
 	dribbbleImage := DribbbleImage{"", ""}
 

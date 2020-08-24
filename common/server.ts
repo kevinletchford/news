@@ -1,4 +1,4 @@
-export const server = "https://news.ultr.dev";
+export const server = "https://news.kevinletchford.vercel.app";
 
 const tryParseJSON = (jsonString) => {
   try {
@@ -16,13 +16,3 @@ export const getData = async (endpoint: string) => {
   if (!result.ok) return null;
   return result.json();
 };
-
-if (typeof window !== "undefined") {
-  self.addEventListener("fetch", function (event) {
-    event.respondWith(
-      fetch(event.request).then(function (networkResponse) {
-        return networkResponse;
-      })
-    );
-  });
-}

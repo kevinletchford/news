@@ -16,16 +16,16 @@ html {
 
 :root {
   --background: #25294a;
-  --header:rgba(255, 255, 255, 0.65);
-  --button-background:#2d325a;
-  --highlight:#3958b8;
-  --highlight-text:#fff;
-  --link:#fff;
-  --menu-background:#fff;
+  --header: rgba(255, 255, 255, 0.65);
+  --button-background: #2d325a;
+  --highlight: #3958b8;
+  --highlight-text: #fff;
+  --link: #fff;
+  --menu-background: #fff;
 }
 
-body{
-    background: var(--background)
+body {
+  background: var(--background);
 }
 
 h1,
@@ -34,36 +34,36 @@ h3,
 h4 {
   margin: 0;
   padding: 0;
-  color:var(--header);
+  color: var(--header);
 }
 
-h2{
-    margin-bottom:0.5rem;
-    font-weight:100;
+h2 {
+  margin-bottom: 0.5rem;
+  font-weight: 100;
 }
 
-h2{
-    background:var(--background);
-    position:sticky;
-    top:0;
-    padding:1rem 0;
-  }
+h2 {
+  background: var(--background);
+  position: sticky;
+  top: 0;
+  padding: 1rem 0;
+}
 
 a {
   text-decoration: none;
-  color:var(--link);
-  line-height:1.4;
+  color: var(--link);
+  line-height: 1.4;
 }
 
-button{
-  background:none;
-  border:none;
-  outline:none;
-  cursor:pointer;
+button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
-.wrapper{
-  overflow-x:hidden;
+.wrapper {
+  overflow-x: hidden;
 }
 
 .grid {
@@ -72,7 +72,7 @@ button{
   padding: 1rem;
 }
 
-@media(min-width:786px){
+@media (min-width: 786px) {
   .grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr;
@@ -83,99 +83,105 @@ button{
     height: calc(100vh - 2rem);
     overflow-y: scroll;
   }
-
 }
 
 .grid > div::-webkit-scrollbar {
   display: none;
 }
 
-.rss + .rss{
-    margin-top:1rem;
-  }
-
-.menu{
-  position:fixed;
-  top:1rem;
-  right:1rem;
-  z-index:99;
-  text-align:right;
+.rss + .rss {
+  margin-top: 1rem;
 }
 
-.cross{
-  width:30px;
-  height:30px;
-  color:var(--link);
+.menu {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 99;
+  text-align: right;
 }
 
-.cross{
-  position:absolute;
-  background:var(--background);
-  top:-0.5rem;
-  right:-0.5rem;
-  border-radius:100px;
-  width:30px;
-  height:30px;
-  padding:5px;
+.cross {
+  width: 30px;
+  height: 30px;
+  color: var(--link);
 }
 
-.dropdown{
-  display:none;
-  position:relative;
+.cross {
+  position: absolute;
+  background: var(--background);
+  top: -0.5rem;
+  right: -0.5rem;
+  border-radius: 100px;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
 }
 
-.dropdown_open{
-  display:block;
-  padding:1rem;
-  border-radius:6px;
-  background:var(--menu-background);
-  width:calc(100vw - 2rem);
+.dropdown {
+  display: none;
+  position: relative;
+}
+
+.dropdown_open {
+  display: block;
+  padding: 1rem;
+  border-radius: 6px;
+  background: var(--menu-background);
+  width: calc(100vw - 2rem);
   height: calc(100vh - 2rem);
-  top:-2rem;
-  margin-top:0;
-  font-size:2rem;
-  text-align:center;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
+  top: -2rem;
+  margin-top: 0;
+  font-size: 2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.dropdown button{
-  color:var(--highlight-text);
-  display:block;
-  font-weight:bold;
-  font-size:3rem;
-  padding:0.5rem;
+.dropdown button {
+  color: var(--highlight-text);
+  display: block;
+  font-weight: bold;
+  font-size: 3rem;
+  padding: 0.5rem;
 }
 
-.comments svg{
-  width:30px;
-  height:30px;
-  padding:5px;
+.comments svg {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
 }
 
-.menu__items{
-  display:flex;
-  align-items:center;
+.star svg {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
 }
 
-.menu__items a, .menu__items button{
-  flex:1;
-  color:var(--link);
-  text-align:center;
+.menu__items {
+  display: flex;
+  align-items: center;
+}
+
+.menu__items a,
+.menu__items button {
+  flex: 1;
+  color: var(--link);
+  text-align: center;
   padding: 0 0.5rem;
 }
 
-.menu__items svg{
-  width:30px;
-  height:30px;
+.menu__items svg {
+  width: 30px;
+  height: 30px;
 }
 
-.padding_h{
-  padding:0 1rem;
+.padding_h {
+  padding: 0 1rem;
 }
 
-.padding_v{
-  padding:1rem 0;
+.padding_v {
+  padding: 1rem 0;
 }
