@@ -19,22 +19,11 @@ export function GitHub({ gitHubRepositories }: Props): ReactElement {
     gitHubRepositories
   );
 
-  const currentLanguage = async (event: React.FormEvent<HTMLSelectElement>) => {
-    const language = event.currentTarget.value;
-    if (language !== "") {
-      await getData(`${server}/api/github?=language=${language}`).then((y) => {
-        console.log(y);
-      });
-    }
-  };
-
-  useEffect(() => {}, []);
-
   return (
     <div className="github-repositories">
       <h2>
         Top Github Repos
-        <select onChange={currentLanguage}>
+        <select>
           <option value="">Language</option>
           <option value="c%23?">C#</option>
           <option value="css">css</option>
