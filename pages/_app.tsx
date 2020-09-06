@@ -1,4 +1,5 @@
 import "../styles/styles.css";
+import "../styles/nprogress.css";
 import Head from "next/head";
 import { AppProps } from "next/app";
 import Router from "next/router";
@@ -9,7 +10,14 @@ import { GetThemeFromCookie } from "./../common/theme";
 import { initGA, logPageView } from "../common/analytics";
 import { useEffect } from "react";
 import { swInit } from "./../common/service-worker-init";
-import { swipeEvents } from "./../common/swipeEvents";
+import NProgress from "nprogress";
+
+Router.events.on("routeChangeStart", (url) => {
+  console.log(`Loading: ${url}`);
+  NProgress.start();
+});
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
 
 function App({ Component, pageProps }: AppProps) {
   useEffect(() => {

@@ -8,8 +8,15 @@ html {
   box-sizing: border-box;
   font-family: "Manrope", sans-serif;
   padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
+  padding-bottom: calc(5rem + env(safe-area-inset-bottom));
 }
+
+@media (min-width: 768px) {
+  html {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
 *,
 *:before,
 *:after {

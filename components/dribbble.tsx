@@ -1,24 +1,32 @@
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement, useState } from "react";
 
 interface Props {
-    dribbbleImages: DribbbleImage[]
+  dribbbleImages: DribbbleImage[];
 }
-export interface DribbbleImage{
-    Url: string
-    Image: string
-  }
+export interface DribbbleImage {
+  Url: string;
+  Image: string;
+}
 
-export function Dribbble({dribbbleImages}: Props): ReactElement {
-    const [items, setItems] = useState<Array<DribbbleImage>>(dribbbleImages);
-    return(
-        <div className="dribbble">
-         {items===null||items===undefined ? <div>Fail</div>: <>{items.map((item,i) =>{
-            return(
-                <a key={i} href={`https://dribbble.com${item.Url}`} >
-                    <img src={item.Image + "?compress=1&resize=400x300"} />
-                </a>)
-          })}</>}
-        <style jsx>{`
+export function Dribbble({ dribbbleImages }: Props): ReactElement {
+  const [items, setItems] = useState<Array<DribbbleImage>>(dribbbleImages);
+  return (
+    <div className="dribbble">
+      {items === null || items === undefined ? (
+        <div>Fail</div>
+      ) : (
+        <>
+          {items.map((item, i) => {
+            return (
+              <a key={i} href={`https://dribbble.com${item.Url}`}>
+                <img src={item.Image + "?compress=1&resize=400x300"} />
+              </a>
+            );
+          })}
+        </>
+      )}
+      <style jsx>
+        {`
         .dribbble{
             display:grid;
                 grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
@@ -41,13 +49,14 @@ export function Dribbble({dribbbleImages}: Props): ReactElement {
             display:block;
             width:100%;
             max-width:100%;
+            border-radius:12px;
         }
 
 
         }
 
         `}
-            </style>
-        </div>
-      )
+      </style>
+    </div>
+  );
 }

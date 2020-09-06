@@ -134,6 +134,7 @@ export function GitHub({ gitHubRepositories }: Props): ReactElement {
           align-items: center;
         }
         .github-select {
+          -webkit-appearance: none;
           margin-left: auto;
           background: var(--background);
           border: none;
