@@ -7,6 +7,8 @@ html {
 html {
   box-sizing: border-box;
   font-family: "Manrope", sans-serif;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 *,
 *:before,
@@ -64,6 +66,14 @@ button {
 
 .wrapper {
   overflow-x: hidden;
+}
+
+.ios-offset-top {
+  height: env(safe-area-inset-top);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--background);
 }
 
 .grid {
