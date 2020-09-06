@@ -1,1 +1,0 @@
-{"ast":null,"code":"import _objectDestructuringEmpty from \"@babel/runtime/helpers/esm/objectDestructuringEmpty\";\nvar __jsx = React.createElement;\nimport React from 'react';\nexport default function Footer(_ref) {\n  _objectDestructuringEmpty(_ref);\n\n  return __jsx(\"footer\", {\n    className: \"footer\"\n  });\n}","map":null,"metadata":{},"sourceType":"module"}

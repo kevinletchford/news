@@ -1,1 +1,0 @@
-self.__BUILD_MANIFEST = (function(a){return {"/":[a],"/dribbble":[a],"/hackernews":[a],"/index":[a],"/rss":[a]}}("static\u002Fchunks\u002F87373248a6a223acbcc48caaf130b7ca1c1c4389.11722adbf5e4758c47c0.js"));self.__BUILD_MANIFEST_CB && self.__BUILD_MANIFEST_CB()

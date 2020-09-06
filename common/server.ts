@@ -1,4 +1,4 @@
-export const server = "https://news.kevinletchford.vercel.app";
+export const server = "https://news.ultr.dev";
 
 const tryParseJSON = (jsonString) => {
   try {

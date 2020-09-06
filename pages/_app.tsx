@@ -5,28 +5,35 @@ import Router from "next/router";
 import withGA from "next-ga";
 import Menu from "./../components/menu";
 import Footer from "./../components/footer";
-import {GetThemeFromCookie} from './../common/theme';
-import { initGA, logPageView } from "../common/analytics"
+import { GetThemeFromCookie } from "./../common/theme";
+import { initGA, logPageView } from "../common/analytics";
 import { useEffect } from "react";
+import { swInit } from "./../common/service-worker-init";
 
 function App({ Component, pageProps }: AppProps) {
-
   useEffect(() => {
-    GetThemeFromCookie()
-    initGA()
-    logPageView()
-});
+    GetThemeFromCookie();
+    swInit();
+    initGA();
+    logPageView();
+  });
   return (
     <div className="wrapper">
+      <Head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+        />
+        <meta name="theme-color" content="#25294a" />
+        <link rel="apple-touch-icon" href="/img/apple.png"></link>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Manrope:wght@523&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
       <Menu />
-      <Component {...pageProps}>
-        <Head>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Manrope:wght@523&display=swap"
-            rel="stylesheet"
-          />
-        </Head>
-      </Component>
+      <Component {...pageProps}></Component>
       <Footer />
     </div>
   );

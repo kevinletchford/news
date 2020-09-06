@@ -95,10 +95,29 @@ button {
 
 .menu {
   position: fixed;
-  top: 1rem;
-  right: 1rem;
+  bottom: -4px;
+  right: 0;
+  left: 0;
   z-index: 99;
-  text-align: right;
+  width: calc(100% - 2rem);
+  background: var(--menu-background);
+  border-radius: 12px 12px 0 0;
+  margin: 0 auto;
+  box-shadow: 0px 20px 20px 6px #00000073, 0px 0px 0px 1px #ffffff21;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media (min-width: 768px) {
+  .menu {
+    border-radius: 0 0 12px 12px;
+    bottom: auto;
+    top: 0;
+    width: auto;
+    right: 1rem;
+    left: auto;
+    box-shadow: 0px -20px 20px 6px #00000073, 0px 0px 0px 1px #ffffff21;
+    padding: 0;
+  }
 }
 
 .cross {
@@ -127,12 +146,8 @@ button {
   display: block;
   padding: 1rem;
   border-radius: 6px;
-  background: var(--menu-background);
-  width: calc(100vw - 2rem);
-  height: calc(100vh - 2rem);
-  top: -2rem;
   margin-top: 0;
-  font-size: 2rem;
+
   text-align: center;
   display: flex;
   align-items: center;
@@ -144,7 +159,7 @@ button {
   color: var(--highlight-text);
   display: block;
   font-weight: bold;
-  font-size: 3rem;
+  font-size: 1.5rem;
   padding: 0.5rem;
 }
 
@@ -169,8 +184,22 @@ button {
 .menu__items button {
   flex: 1;
   color: var(--link);
+  opacity: 0.7;
   text-align: center;
-  padding: 0 0.5rem;
+  padding: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .menu__items a,
+  .menu__items button {
+    padding: 0.5rem;
+  }
+}
+
+.menu__items a.link_active,
+.menu__items button.link_active {
+  opacity: 1;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
 }
 
 .menu__items svg {

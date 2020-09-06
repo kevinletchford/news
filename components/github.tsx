@@ -19,11 +19,29 @@ export function GitHub({ gitHubRepositories }: Props): ReactElement {
     gitHubRepositories
   );
 
+  const [filter, setFilter] = useState<string | null>();
+
+  async function getGithubData(filter) {
+    if (filter != null) {
+      const githubJson = await getData(
+        `${server}/api/github?language=${filter}`
+      );
+      setItems(githubJson);
+    }
+  }
+
+  useEffect(() => {
+    getGithubData(filter);
+  }, [items, filter]);
+
   return (
     <div className="github-repositories">
-      <h2>
-        Top Github Repos
-        <select>
+      <div className="section-header-container">
+        <h2>Top Github Repos</h2>
+        <select
+          className="github-select"
+          onChange={(e) => setFilter(e.target.value)}
+        >
           <option value="">Language</option>
           <option value="c%23?">C#</option>
           <option value="css">css</option>
@@ -32,7 +50,7 @@ export function GitHub({ gitHubRepositories }: Props): ReactElement {
           <option value="typescript">typescript</option>
           <option value="go">go</option>
         </select>
-      </h2>
+      </div>
       {items === null || items === undefined ? (
         <div>None</div>
       ) : (
@@ -110,6 +128,20 @@ export function GitHub({ gitHubRepositories }: Props): ReactElement {
           font-weight: normal;
           text-transform: uppercase;
           letter-spacing: 2px;
+        }
+        .section-header-container {
+          display: flex;
+          align-items: center;
+        }
+        .github-select {
+          margin-left: auto;
+          background: var(--background);
+          border: none;
+          color: white;
+          padding: 1rem;
+          outline: none;
+          margin-right: 1rem;
+          font-size: 16px;
         }
       `}</style>
     </div>
