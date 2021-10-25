@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
-
+	"net/url"
 	"github.com/PuerkitoBio/goquery"
 )
 
@@ -52,9 +52,19 @@ func processElement(index int, element *goquery.Selection) {
 		dribbbleImage.Url = href
 	}
 	if imageExists {
-		dribbbleImage.Image = image
+		dribbbleImage.Image = StripQueryString(image)
 	}
 
 	dribbblePosts = append(dribbblePosts, dribbbleImage)
 
+}
+
+
+func StripQueryString(inputUrl string) string {
+	u, err := url.Parse(inputUrl)
+	if err != nil {
+			panic(err)
+	}
+	u.RawQuery = ""
+	return u.String()
 }
