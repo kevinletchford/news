@@ -57,7 +57,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 func processElement(index int, element *goquery.Selection) {
 
-	storyLink := element.Find(".storylink")
+	storyLink := element.Find(".titlelink")
 
 	href, hrefExists := storyLink.Attr("href")
 	id, idExists := element.Attr("id")
